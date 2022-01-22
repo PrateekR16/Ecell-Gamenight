@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
+import Typography from '@mui/material/Typography'
 
 export default function BasicTable() {
 
@@ -37,25 +38,46 @@ export default function BasicTable() {
   }
 
   return (
-    <Box sx={{ width: "50vw", alignItems: "center", justifyContent: "center" }}>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-          </TableHead>
-          <TableBody>
-            {data.map((row) => (
-              <TableRow
-                key={row.rank}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                {row.map((item) =>{
-                  return <TableCell align="center">{item}</TableCell>
-                } )}
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
-  );
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '	#202020',
+        height: '100%',
+      }}
+    >
+      <Box
+        sx={{ width: '50vw', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead></TableHead>
+            <TableBody>
+              {data.map((row) => (
+                <TableRow
+                  key={row.rank}
+                  sx={{
+                    '&:last-child td, &:last-child th': { border: 0 },
+                    backgroundColor: '#101010',
+                  }}
+                >
+                  {row.map((item) => {
+                    return (
+                      <TableCell align="center">
+                        <Typography variant="h6" color="#C8C8C8">
+                          {item}
+                        </Typography>
+                      </TableCell>
+                    )
+                  })}
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
+    </div>
+  )
 }
