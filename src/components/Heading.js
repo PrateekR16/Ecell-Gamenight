@@ -5,6 +5,7 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import logo from '../assets/logo.png'
 
 const bull = (
   <Box
@@ -20,14 +21,30 @@ export default function BasicCard() {
         <div
           style={{
             display: 'flex',
-            flexDirection: 'column',
+            flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
           }}
         >
-          <Typography variant="h4" fontFamily="'Orbitron', sans-serif">
-            Scoreboard for E-Cell Game Night 2022
-          </Typography>
+          <div>
+            <img
+              src={logo}
+              alt="Logo"
+              style={{ height: '100px', width: '130px', marginRight: '40px' }}
+            />
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Typography variant="h4" fontFamily="'Orbitron', sans-serif">
+              LeaderBoard for E-Cell Game Night 2022
+            </Typography>
+          </div>
         </div>
       </CardContent>
     </Card>
