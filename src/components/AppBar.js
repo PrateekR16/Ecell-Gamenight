@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
+import Typography from '@mui/material/Typography';
 
 export default function ButtonAppBar() {
     const navigate = useNavigate();
@@ -20,7 +21,12 @@ export default function ButtonAppBar() {
 
                     {rooms.map((room) => {
                         return (
-                            <Link className="link" to={`/room/${number}`} onDoubleClick={refreshPage} onClick={() => setNumber(room)}><Button sx={{ margin: '1.2em 2.5em',borderRadius:'10px', width : '9em'}} variant='outlined' color='warning'>Room {room}</Button></Link>
+                            <Link className="link" to={`/room/${number}`} onDoubleClick={refreshPage} onClick={() => setNumber(room)}><Button sx={{ margin: '1.2em 2.5em',borderRadius:'10px', width : '9em'}} variant='outlined' color='warning'>
+                                <Typography fontFamily="'Orbitron', sans-serif">
+                                Room {room}<
+                                    /Typography>
+                                </Button>
+                                </Link>
                         )
                     })}
                 </Toolbar>

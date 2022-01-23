@@ -25,7 +25,7 @@ export default function BasicCard() {
             alignItems: 'center',
           }}
         >
-          <Typography variant="h4">
+          <Typography variant="h4" fontFamily="'Orbitron', sans-serif">
             Scoreboard for E-Cell Game Night 2022
           </Typography>
         </div>

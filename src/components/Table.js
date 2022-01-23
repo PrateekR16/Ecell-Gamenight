@@ -81,17 +81,17 @@ export default function BasicTable() {
             <TableHead>
               <TableRow sx={{ backgroundColor: '#101010' }}>
                 <TableCell align="center">
-                  <Typography variant="h5" color="#C8C8C8">
+                  <Typography variant="h5" fontFamily="'Orbitron', sans-serif" color="#C8C8C8">
                     Rank
                   </Typography>
                 </TableCell>
                 <TableCell align="center">
-                  <Typography variant="h5" color="#C8C8C8">
+                  <Typography variant="h5" fontFamily="'Orbitron', sans-serif" color="#C8C8C8">
                     Team Name
                   </Typography>
                 </TableCell>
                 <TableCell align="center">
-                  <Typography variant="h5" color="#C8C8C8">
+                  <Typography variant="h5" fontFamily="'Orbitron', sans-serif" color="#C8C8C8">
                     Points
                   </Typography>
                 </TableCell>
@@ -120,7 +120,7 @@ export default function BasicTable() {
                   {row.map((item) => {
                     return (
                       <TableCell align="center">
-                        <Typography variant="h6" color="#C8C8C8">
+                        <Typography variant="h6" color="#C8C8C8" fontFamily="'Orbitron', sans-serif">
                           {item}
                         </Typography>
                       </TableCell>
