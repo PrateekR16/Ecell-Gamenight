@@ -1,12 +1,14 @@
 import Table from './components/Table'
 import AppBar from './components/AppBar'
+import { Routes, Route } from 'react-router-dom'
 function App() {
   return (
-    <div className="App">
+   <>
       <AppBar></AppBar>
-      <Table></Table>
-    </div>
-  );
+      <Routes>
+        <Route path='/room/:number' element={<Table/>}></Route>
+        </Routes>
+        </>
+        );
 }
-
-export default App;
+        export default App;
