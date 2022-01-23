@@ -10,6 +10,8 @@ import Box from '@mui/material/Box';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import Typography from '@mui/material/Typography'
+import { motion } from 'framer-motion'
+import '../index.css'
 
 export default function BasicTable() {
 
@@ -19,7 +21,7 @@ export default function BasicTable() {
   useEffect(() => {
     
     const getData = async () => {
-      let res = await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1digOYBypnO4-5ZtCibBfbULwEkSllpNNG8ZMduBqkME/values/Sheet1!A1:c10?key=AIzaSyB2oGgTTFbend-RafhynufvPhKflY7O8OI')
+      let res = await axios.get('https://sheets.googleapis.com/v4/spreadsheets/1digOYBypnO4-5ZtCibBfbULwEkSllpNNG8ZMduBqkME/values/Sheet1!A2:c10?key=AIzaSyB2oGgTTFbend-RafhynufvPhKflY7O8OI')
 
       let values = res.data.values;
       console.log(values);
@@ -51,16 +53,55 @@ export default function BasicTable() {
       <Box
         sx={{ width: '50vw', alignItems: 'center', justifyContent: 'center' }}
       >
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead></TableHead>
+        <TableContainer
+          component={Paper}
+          sx={{
+            maxWidth: '1000px',
+            maxHeight: '620px',
+            '&::-webkit-scrollbar': {
+              width: 0,
+              height: 0
+            },
+          }}
+        >
+          <Table sx={{ minWidth: 750 }} aria-label="simple table">
+            <TableHead>
+              <TableRow sx={{ backgroundColor: '#101010' }}>
+                <TableCell align="center">
+                  <Typography variant="h5" color="#C8C8C8">
+                    Rank
+                  </Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h5" color="#C8C8C8">
+                    Team Name
+                  </Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h5" color="#C8C8C8">
+                    Points
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableHead>
             <TableBody>
               {data.map((row) => (
                 <TableRow
                   key={row.rank}
+                  component={motion.div}
+                  whileHover={{
+                    scale: 1.15,
+                    transition: { duration: 0.3 },
+                    backgroundColor: '#FF5F1F',
+                  }}
                   sx={{
-                    '&:last-child td, &:last-child th': { border: 0 },
                     backgroundColor: '#101010',
+                    // '&:hover': {
+                    //   backgroundColor: '#a9a9a9',
+                    // },
+                    // ' &:focus': {
+                    //   backgroundCor: 'green',
+                    // },
                   }}
                 >
                   {row.map((item) => {

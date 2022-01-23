@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'gomarice_game_music_love';
+  src: local('gomarice_game_music_love'),
+    url(./assets/game-music-love/gomarice_game_music_love.ttf)
+      format('truetype');
+}
+
+* {
+  font-family: 'Orbitron', sans-serif;
+}
