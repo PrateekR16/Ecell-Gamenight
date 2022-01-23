@@ -14,30 +14,38 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { motion } from 'framer-motion'
 import '../index.css'
+import TypeWriterEffect from 'react-typewriter-effect'
 
 export default function BasicTable() {
-
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState();
+  const [text, setText] = useState('');
+ 
+  // let string;
   const params = useParams();
   let sheet_no = params.number
-  let url = `https://sheets.googleapis.com/v4/spreadsheets/1digOYBypnO4-5ZtCibBfbULwEkSllpNNG8ZMduBqkME/values/Sheet${sheet_no}!A2:c10?key=AIzaSyB2oGgTTFbend-RafhynufvPhKflY7O8OI`
-
-  console.log(url);
-
   useEffect(() => {
-
+    let url = `https://sheets.googleapis.com/v4/spreadsheets/1digOYBypnO4-5ZtCibBfbULwEkSllpNNG8ZMduBqkME/values/Sheet${sheet_no}!A2:c10?key=AIzaSyB2oGgTTFbend-RafhynufvPhKflY7O8OI`
     const getData = async () => {
       let res = await axios.get(url)
 
-      let values = res.data.values;
-      console.log(values);
+      let values = res.data.values
       setData(values)
       setLoading(false)
+      // string = `Scores for Room ${sheet_no}`
+      
+      console.log(text);
+     
     }
     getData()
-  }, [])
+  }, [sheet_no])
 
+  useEffect(() => {
+    setText(`Scores for Room ${sheet_no}`)
+    console.log(sheet_no)
+  }, [sheet_no])
+  
+  
   if (isLoading) {
     return (
       <Box display="flex"
@@ -52,7 +60,6 @@ export default function BasicTable() {
   }
 
   return (
-
     <div
       style={{
         display: 'flex',
@@ -66,6 +73,25 @@ export default function BasicTable() {
       <Box
         sx={{ width: '50vw', alignItems: 'center', justifyContent: 'center' }}
       >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: '	#202020',
+          }}
+        >
+          <Typography
+            variant="h4"
+            fontFamily="'Orbitron', sans-serif"
+            color="#C8C8C8"
+            alignItems="center"
+            marginBottom='10px'
+          >
+            {text}
+          </Typography>
+        </div>
         <TableContainer
           component={Paper}
           sx={{
@@ -73,7 +99,7 @@ export default function BasicTable() {
             maxHeight: '620px',
             '&::-webkit-scrollbar': {
               width: 0,
-              height: 0
+              height: 0,
             },
           }}
         >
@@ -81,17 +107,29 @@ export default function BasicTable() {
             <TableHead>
               <TableRow sx={{ backgroundColor: '#101010' }}>
                 <TableCell align="center">
-                  <Typography variant="h5" fontFamily="'Orbitron', sans-serif" color="#C8C8C8">
+                  <Typography
+                    variant="h5"
+                    fontFamily="'Orbitron', sans-serif"
+                    color="#C8C8C8"
+                  >
                     Rank
                   </Typography>
                 </TableCell>
                 <TableCell align="center">
-                  <Typography variant="h5" fontFamily="'Orbitron', sans-serif" color="#C8C8C8">
+                  <Typography
+                    variant="h5"
+                    fontFamily="'Orbitron', sans-serif"
+                    color="#C8C8C8"
+                  >
                     Team Name
                   </Typography>
                 </TableCell>
                 <TableCell align="center">
-                  <Typography variant="h5" fontFamily="'Orbitron', sans-serif" color="#C8C8C8">
+                  <Typography
+                    variant="h5"
+                    fontFamily="'Orbitron', sans-serif"
+                    color="#C8C8C8"
+                  >
                     Points
                   </Typography>
                 </TableCell>
@@ -109,18 +147,16 @@ export default function BasicTable() {
                   }}
                   sx={{
                     backgroundColor: '#101010',
-                    // '&:hover': {
-                    //   backgroundColor: '#a9a9a9',
-                    // },
-                    // ' &:focus': {
-                    //   backgroundCor: 'green',
-                    // },
                   }}
                 >
                   {row.map((item) => {
                     return (
                       <TableCell align="center">
-                        <Typography variant="h6" color="#C8C8C8" fontFamily="'Orbitron', sans-serif">
+                        <Typography
+                          variant="h6"
+                          color="#C8C8C8"
+                          fontFamily="'Orbitron', sans-serif"
+                        >
                           {item}
                         </Typography>
                       </TableCell>
