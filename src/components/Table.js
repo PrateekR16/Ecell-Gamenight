@@ -14,28 +14,22 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios';
 import { motion } from 'framer-motion'
 import '../index.css'
-import TypeWriterEffect from 'react-typewriter-effect'
 
 export default function BasicTable() {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState();
   const [text, setText] = useState('');
  
-  // let string;
   const params = useParams();
   let sheet_no = params.number
   useEffect(() => {
-    let url = `https://sheets.googleapis.com/v4/spreadsheets/1digOYBypnO4-5ZtCibBfbULwEkSllpNNG8ZMduBqkME/values/Sheet${sheet_no}!A2:c10?key=AIzaSyB2oGgTTFbend-RafhynufvPhKflY7O8OI`
+    let url = `https://sheets.googleapis.com/v4/spreadsheets/1digOYBypnO4-5ZtCibBfbULwEkSllpNNG8ZMduBqkME/values/Sheet${sheet_no}!A69:D78?key=AIzaSyB2oGgTTFbend-RafhynufvPhKflY7O8OI`
     const getData = async () => {
       let res = await axios.get(url)
 
       let values = res.data.values
       setData(values)
       setLoading(false)
-      // string = `Scores for Room ${sheet_no}`
-      
-      console.log(text);
-     
     }
     getData()
   }, [sheet_no])
@@ -87,7 +81,7 @@ export default function BasicTable() {
             fontFamily="'Orbitron', sans-serif"
             color="#C8C8C8"
             alignItems="center"
-            marginBottom='10px'
+            marginBottom="10px"
           >
             {text}
           </Typography>
@@ -98,8 +92,17 @@ export default function BasicTable() {
             maxWidth: '1000px',
             maxHeight: '620px',
             '&::-webkit-scrollbar': {
-              width: 0,
               height: 0,
+            },
+            '&::-webkit-scrollbar-track': {
+              backgroundColor: 'black',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              backgroundColor: '#C8C8C8',
+              color: 'black',
+              borderRadius: '10px',
+              outline: '1px solid slategery',
+              '-webkit-box-shadow': 'inset 0 0 6px rgba(8,8,8,0.0)',
             },
           }}
         >
@@ -112,7 +115,7 @@ export default function BasicTable() {
                     fontFamily="'Orbitron', sans-serif"
                     color="#C8C8C8"
                   >
-                    Rank
+                    Teams
                   </Typography>
                 </TableCell>
                 <TableCell align="center">
@@ -130,7 +133,16 @@ export default function BasicTable() {
                     fontFamily="'Orbitron', sans-serif"
                     color="#C8C8C8"
                   >
-                    Points
+                    Total
+                  </Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography
+                    variant="h5"
+                    fontFamily="'Orbitron', sans-serif"
+                    color="#C8C8C8"
+                  >
+                    Rank
                   </Typography>
                 </TableCell>
               </TableRow>

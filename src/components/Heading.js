@@ -1,20 +1,12 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
-import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
+import { useNavigate } from 'react-router-dom'
 import Typography from '@mui/material/Typography'
 import logo from '../assets/logo.png'
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  ></Box>
-)
-
 export default function BasicCard() {
+  let navigate = useNavigate()
   return (
     <Card sx={{ backgroundColor: '#000', color: '#fff' }}>
       <CardContent>
@@ -26,7 +18,11 @@ export default function BasicCard() {
             alignItems: 'center',
           }}
         >
-          <div>
+          <div
+            onClick={(e) => {
+              navigate(`/`)
+            }} className="logo"
+          >
             <img
               src={logo}
               alt="Logo"

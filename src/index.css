@@ -20,4 +20,7 @@ code {
   font-family: -apple-system, BlinkMacSystemFont, 'Seg';
 }
 
+.logo:hover{
+  cursor: pointer
+}
 

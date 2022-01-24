@@ -3,15 +3,13 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Button from '@mui/material/Button'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Typography from '@mui/material/Typography'
 
 
 export default function ButtonAppBar() {
   let navigate = useNavigate()
   let rooms = [1, 2, 3, 4, 5, 6]
-  // const [flag, setFlag] = useState(true)
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -36,8 +34,6 @@ export default function ButtonAppBar() {
                 color="warning"
                 onClick={(e) => {
                   navigate(`/room/${room}`)
-                  // setFlag(!flag)
-                  // console.log(e.target.value);
                 }}
               >
                 <Typography fontFamily="'Orbitron', sans-serif">
