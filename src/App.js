@@ -3,6 +3,7 @@ import Table from './components/Table'
 import AppBar from './components/AppBar'
 import { Routes, Route } from 'react-router-dom'
 import Heading from './components/Heading'
+import Landing from './components/Landing'
 import ParticlesContainer from './components/ParticlesContainer'
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
         <Heading />
         <AppBar></AppBar>
         <Routes>
-          <Route path='/room/:number' element={<Table />}></Route>
+          <Route path="/room/:number" element={<Table />}></Route>
+          <Route path="/" element={<Landing />}></Route>
         </Routes>
       </div>
       <div
@@ -33,9 +35,6 @@ function App() {
     </>
   )
 }
-
-
-
 
 export default App;
 
